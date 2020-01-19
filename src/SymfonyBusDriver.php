@@ -1,7 +1,10 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace Bref\Messenger\Service;
+declare(strict_types=1);
 
+namespace Happyr\BrefMessenger;
+
+use Bref\Messenger\Service\BusDriver;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Event\WorkerMessageFailedEvent;
@@ -32,12 +35,12 @@ class SymfonyBusDriver implements BusDriver
         $event = new WorkerMessageReceivedEvent($envelope, $transportName);
         $this->eventDispatcher->dispatch($event);
 
-        if (! $event->shouldHandle()) {
+        if (!$event->shouldHandle()) {
             return;
         }
 
         try {
-            $envelope = $bus->dispatch($envelope->with(new ReceivedStamp($transportName), new ConsumedByWorkerStamp));
+            $envelope = $bus->dispatch($envelope->with(new ReceivedStamp($transportName), new ConsumedByWorkerStamp()));
         } catch (\Throwable $throwable) {
             if ($throwable instanceof HandlerFailedException) {
                 $envelope = $throwable->getEnvelope();
