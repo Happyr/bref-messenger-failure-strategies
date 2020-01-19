@@ -29,6 +29,7 @@ On each consumer you can choose to let Symfony handle failures as described in
 
 framework:
     messenger:
+        failure_transport: failed
         transports:
             failed: 'doctrine://default?queue_name=failed'
             workqueue:
@@ -65,6 +66,7 @@ you should use the failure queue directly.
 
 framework:
     messenger:
+        failure_transport: failed
         transports:
             failed: 'doctrine://default?queue_name=failed'
             workqueue:
