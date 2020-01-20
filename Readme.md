@@ -15,7 +15,7 @@ composer require happyr/bref-messenger-failure-strategies
 ```
 
 Now you have a class called `Happyr\BrefMessenger\SymfonyBusDriver` that implements
-`Bref\Messenger\Service\BusDriver`. Feel free to configure your consumers with this 
+`Bref\Symfony\Messenger\Service\BusDriver`. Feel free to configure your consumers with this 
 new class. 
 
 ## Example
@@ -46,7 +46,7 @@ services:
         autowire: true
 
     my_sqs_consumer:
-        class: Bref\Messenger\Service\Sqs\SqsConsumer
+        class: Bref\Symfony\Messenger\Service\Sqs\SqsConsumer
         arguments:
             - '@Happyr\BrefMessenger\SymfonyBusDriver'
             - '@messenger.routable_message_bus'
