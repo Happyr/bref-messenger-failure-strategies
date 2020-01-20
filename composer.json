@@ -9,11 +9,8 @@
             "email": "tobias.nyholm@gmail.com"
         }
     ],
-    "repositories": [
-        { "type": "vcs", "url": "https://github.com/Nyholm/bref-symfony-messenger"}
-    ],
     "require": {
-        "bref/symfony-messenger": "dev-master"
+        "bref/symfony-messenger": "^0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.4"

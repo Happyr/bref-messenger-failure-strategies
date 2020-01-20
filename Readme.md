@@ -2,7 +2,7 @@
 
 So you have fallen in love with [Bref](https://bref.sh) and you really want to use
 Symfony's excellent Messenger component. You've probably also installed the 
-[Bref Symfony Messenger bundle](https://github.com/Nyholm/bref-symfony-messenger)
+[Bref Symfony Messenger bundle](https://github.com/brefphp/symfony-messenger)
 that allows you to publish messages on SQS and SNS etc. But you are missing something...
 You want to be able to use Symfony Messenger retry strategies, right?
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Happyr\BrefMessenger;
 
-use Bref\Messenger\Service\BusDriver;
+use Bref\Symfony\Messenger\Service\BusDriver;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Event\WorkerMessageFailedEvent;
