@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Happyr\\BrefMessenger\\": ""
+            "Happyr\\BrefMessenger\\": "src/"
         }
     }
 }
