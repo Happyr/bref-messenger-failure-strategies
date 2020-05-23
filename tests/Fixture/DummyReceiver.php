@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace Happyr\BrefMessenger\Test\Fixture;
 
 use Symfony\Component\Messenger\Envelope;
