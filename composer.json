@@ -1,6 +1,6 @@
 {
     "name": "happyr/bref-messenger-failure-strategies",
-    "description": "Make sure you can use Symfony Messenger failure strategies",
+    "description": "Make sure you can use Bref Symfony Messenger failure strategies",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,14 +10,24 @@
         }
     ],
     "require": {
-        "bref/symfony-messenger": "^0.3"
+        "php": ">=7.3",
+        "bref/symfony-messenger": "^0.3",
+        "symfony/messenger": "^4.4 || ^5.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.4"
+        "phpunit/phpunit": "^8.4",
+        "symfony/validator": "^5.0",
+        "symfony/polyfill-php80": "^1.17",
+        "symfony/event-dispatcher-contracts": "^2.0"
     },
     "autoload": {
         "psr-4": {
             "Happyr\\BrefMessenger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Happyr\\BrefMessenger\\Test\\": "tests/"
         }
     }
 }
