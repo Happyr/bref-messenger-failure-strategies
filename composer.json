@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "bref/symfony-messenger": "^0.1"
+        "bref/symfony-messenger": "^0.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.4"
