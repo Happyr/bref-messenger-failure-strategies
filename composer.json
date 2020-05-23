@@ -1,6 +1,6 @@
 {
     "name": "happyr/bref-messenger-failure-strategies",
-    "description": "Make sure you can use Symfony Messenger failure strategies",
+    "description": "Make sure you can use Bref Symfony Messenger failure strategies",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -21,6 +21,11 @@
     "autoload": {
         "psr-4": {
             "Happyr\\BrefMessenger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Happyr\\BrefMessenger\\Test\\": "tests/"
         }
     }
 }

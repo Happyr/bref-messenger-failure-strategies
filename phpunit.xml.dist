@@ -8,7 +8,7 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         bootstrap="Tests/bootstrap.php"
+         bootstrap="vendor/autoload.php"
         >
 
     <php>
@@ -17,7 +17,7 @@
 
     <testsuites>
         <testsuite name="Test Suite">
-            <directory>./Tests</directory>
+            <directory>./tests</directory>
         </testsuite>
     </testsuites>
 
@@ -26,7 +26,7 @@
             <directory suffix=".php">./</directory>
             <exclude>
                 <directory>vendor</directory>
-                <directory>Tests</directory>
+                <directory>tests</directory>
             </exclude>
         </whitelist>
     </filter>
