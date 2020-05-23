@@ -98,9 +98,9 @@ class SymfonyBusDriver implements BusDriver
         ];
 
         if (null === $firstNestedException) {
-            $logMessage = 'Dispatching {class} caused an exception: ' . $throwable->getMessage();
+            $logMessage = 'Dispatching {class} caused an exception: '.$throwable->getMessage();
         } else {
-            $logMessage = 'Handling {class} caused an HandlerFailedException: ' . $throwable->getMessage();
+            $logMessage = 'Handling {class} caused an HandlerFailedException: '.$throwable->getMessage();
             $context['first_exception'] = $firstNestedException;
         }
 
