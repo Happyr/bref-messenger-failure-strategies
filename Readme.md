@@ -45,15 +45,13 @@ services:
     Happyr\BrefMessenger\SymfonyBusDriver: 
         autowire: true
 
-    my_sqs_consumer:
-        class: Bref\Symfony\Messenger\Service\Sqs\SqsConsumer
+    Bref\Symfony\Messenger\Service\Sqs\SqsConsumer:
         arguments:
             - '@Happyr\BrefMessenger\SymfonyBusDriver'
             - '@messenger.routable_message_bus'
             - '@Symfony\Component\Messenger\Transport\Serialization\SerializerInterface'
             - 'my_sqs' # Same as transport name
-        tags:
-            - { name: bref_messenger.consumer }
+
 # ...
 
 ```
