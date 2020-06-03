@@ -49,35 +49,4 @@ class SymfonyBusDriverTest extends TestCase
         $this->assertInstanceOf(WorkerMessageReceivedEvent::class, $events[2]);
         $this->assertInstanceOf(WorkerMessageHandledEvent::class, $events[3]);
     }
-
-    public function testLogHandlerFailedException()
-    {
-        $fooMessage = new DummyMessage('Foo');
-        $bus = $this->getMockBuilder(MessageBusInterface::class)->getMock();
-
-        $envelope = new Envelope($fooMessage, [new ReceivedStamp('transport'), new ConsumedByWorkerStamp()]);
-        $bus->expects($this->at(0))->method('dispatch')
-            ->with($envelope)
-            ->willThrowException(new HandlerFailedException($envelope, [new \RuntimeException('Foo')]));
-
-        $logger = $this->getMockBuilder(AbstractLogger::class)
-            ->disableOriginalConstructor()
-            ->onlyMethods(['log'])
-            ->getMock();
-        $logger->expects($this->once())->method('log')
-            ->with('error', $this->callback(function ($message) {
-                $this->assertEquals('Handling {class} caused an HandlerFailedException: Foo', $message);
-
-                return true;
-            }), $this->anything());
-
-        $dispatcher = new DummyEventDispatcher();
-        $worker = new SymfonyBusDriver($logger, $dispatcher);
-        $worker->putEnvelopeOnBus($bus, new Envelope($fooMessage), 'transport');
-
-        $events = $dispatcher->getEvents();
-        $this->assertCount(2, $events);
-        $this->assertInstanceOf(WorkerMessageReceivedEvent::class, $events[0]);
-        $this->assertInstanceOf(WorkerMessageFailedEvent::class, $events[1]);
-    }
 }
