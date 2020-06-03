@@ -1,7 +1,7 @@
 # Bref Messenger failure strategies
 
 So you have fallen in love with [Bref](https://bref.sh) and you really want to use
-Symfony's excellent Messenger component. You've probably also installed the 
+Symfony's excellent Messenger component. You've probably also installed the
 [Bref Symfony Messenger bundle](https://github.com/brefphp/symfony-messenger)
 that allows you to publish messages on SQS and SNS etc. But you are missing something...
 You want to be able to use Symfony Messenger retry strategies, right?
@@ -15,13 +15,13 @@ composer require happyr/bref-messenger-failure-strategies
 ```
 
 Now you have a class called `Happyr\BrefMessenger\SymfonyBusDriver` that implements
-`Bref\Symfony\Messenger\Service\BusDriver`. Feel free to configure your consumers with this 
-new class. 
+`Bref\Symfony\Messenger\Service\BusDriver`. Feel free to configure your consumers with this
+new class.
 
 ## Example
 
 On each consumer you can choose to let Symfony handle failures as described in
-[the documentation](https://symfony.com/doc/current/messenger.html#retries-failures). 
+[the documentation](https://symfony.com/doc/current/messenger.html#retries-failures).
 
 
 ```yaml
@@ -42,7 +42,11 @@ framework:
                   max_delay: 60
 
 services:
-    Happyr\BrefMessenger\SymfonyBusDriver: 
+    Happyr\BrefMessenger\ExceptionLogger:
+        autowire: true
+        autoconfigure: true
+
+    Happyr\BrefMessenger\SymfonyBusDriver:
         autowire: true
 
     Bref\Symfony\Messenger\Service\Sqs\SqsConsumer:
@@ -76,9 +80,9 @@ services:
 
 ```
 
-Make sure you re-run the failure queue time to time. The following config will 
+Make sure you re-run the failure queue time to time. The following config will
 run a script for 5 seconds every 30 minutes. It will run for 5 seconds even though
-no messages has failed. 
+no messages has failed.
 
 ```yaml
 # serverless.yml
