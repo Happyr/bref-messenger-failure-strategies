@@ -26,14 +26,14 @@ class ExceptionLogger implements EventSubscriberInterface
         ];
     }
 
-    public function onException(WorkerMessageFailedEvent $event)
+    public function onException(WorkerMessageFailedEvent $event): void
     {
         $envelope = $event->getEnvelope();
         $throwable = $event->getThrowable();
         $firstNestedException = null;
         if ($throwable instanceof HandlerFailedException) {
             $envelope = $throwable->getEnvelope();
-            $nestedExceptions = $throwable->getNestedExceptions();
+            $nestedExceptions = method_exists($throwable, 'getNestedExceptions') ? $throwable->getNestedExceptions() : $throwable->getWrappedExceptions();
             $firstNestedException = $nestedExceptions[array_key_first($nestedExceptions)];
         }
 

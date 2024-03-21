@@ -20,7 +20,7 @@ jobs:
           tools: flex
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Download dependencies
         run: |
@@ -40,7 +40,7 @@ jobs:
           coverage: none
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Download dependencies
         run: |
